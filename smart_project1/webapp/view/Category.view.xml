@@ -1,0 +1,51 @@
+<mvc:View
+    controllerName="smartproject1.controller.Category"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.comp.smarttable"
+    xmlns:flt ="sap.ui.comp.smartfilterbar"
+    xmlns:t="sap.ui.table"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+>
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+                        <flt:SmartFilterBar entitySet="Categories" id="idsfilter" showClearOnFB="true" liveMode="true"
+                        considerSelectionVariants="true" persistencyKey="idpersky">
+                            <flt:controlConfiguration>
+                                <flt:ControlConfiguration key="ID" visibleInAdvancedArea="true"/>
+                                <flt:ControlConfiguration key="Name" visibleInAdvancedArea="true"/>
+                            </flt:controlConfiguration>
+                        </flt:SmartFilterBar>
+                        <table:SmartTable id="SmartTable" entitySet="Categories" smartFilterId="idsfilter" showFullScreenButton="true"
+                        initiallyVisibleFields="ID,Name" header="Categories" enableAutoColumnWidth="true"
+                        ignoreFromPersonalisation="CategoryID" enableAutoBinding="true" editable="false"
+                        useExportToExcel="true">                    
+                        <table:customToolbar>
+                        <Toolbar>
+                        <ToolbarSpacer/>
+                        <!--<Button text="Update" press="onRecordUpdate"></Button>-->
+                        <Button text="Products" press="_onDisplayProducts"></Button>
+                        <Button text="Create" press="_onCreate1"></Button>
+                        <Button text="Delete" press="_onDelete1"></Button>
+                        </Toolbar>
+                        </table:customToolbar>
+
+                        <t:Table rowActionCount="1">
+                        <t:rowActionTemplate>
+                        <t:RowAction>
+                        <t:RowActionItem icon="sap-icon://navigation-right-arrow" press="_OnRowNavigate"/>
+                        </t:RowAction>
+                        </t:rowActionTemplate>
+                        </t:Table>
+
+                        </table:SmartTable>
+                    </content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

@@ -1,0 +1,49 @@
+<mvc:View
+    controllerName="smartproject1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.comp.smarttable"
+    xmlns:flt ="sap.ui.comp.smartfilterbar"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    height="100%"
+>
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+                    <VBox fitContainer="true">
+                        <flt:SmartFilterBar entitySet="Products" id="idsfilter" showClearOnFB="true" liveMode="true"
+                        considerSelectionVariants="true" persistencyKey="idpersky">
+                            <flt:controlConfiguration>
+                                <flt:ControlConfiguration key="ID" visibleInAdvancedArea="true"/>
+                                <flt:ControlConfiguration key="Name" visibleInAdvancedArea="true"/>
+                            </flt:controlConfiguration>
+                        </flt:SmartFilterBar>
+                        <table:SmartTable id="SmartTable" entitySet="Products" smartFilterId="idsfilter" showFullScreenButton="true"
+                        beforeRebindTable="OnBeforeRebindTable" initiallyVisibleFields="ID,Name,Description,Price,Rating" header="Products" enableAutoColumnWidth="true"
+                        ignoreFromPersonalisation="CategoryID" enableAutoBinding="true" editable="false"
+                        useExportToExcel="true" editTogglable="true" app:useSmartToggle="true" 
+                        class="sapUiResponsiveContentPadding" tableType="Table" useTablePersonalisation="true"
+                        >
+				        <table:layoutData>
+					        <FlexItemData growFactor="1" baseSize="0%"/>
+				        </table:layoutData>                        
+                        <table:customToolbar>
+                        <Toolbar>
+                        <ToolbarSpacer/>
+                        <!--<Button text="Create" press="onCraete"></Button>-->
+                        <Button text="Update" press="onRecordUpdate"></Button>
+                        <Button text="Delete" press="onDelete"></Button>
+                        </Toolbar>
+                        </table:customToolbar>
+                        </table:SmartTable>
+                        </VBox>
+                    </content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

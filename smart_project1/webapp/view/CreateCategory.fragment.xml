@@ -1,0 +1,70 @@
+<core:FragmentDefinition
+xmlns="sap.m"
+xmlns:core="sap.ui.core" 
+xmlns:form= "sap.ui.layout.form">
+<Dialog title="Create New Category">
+<form:SimpleForm layout="ResponsiveGridLayout" labelSpanL="1" labelSpanM="1">
+<Label text="Category ID"/>
+<Input value="{CategoryModel>/ID}" width="200px"/>
+<Label text="Category Name"/>
+<Input value="{CategoryModel>/Name}" width="200px"/>
+</form:SimpleForm>
+<!--<Label class="sapUiMediumMarginBegin" text="Products"></Label>
+<List items="{CategoryModel>/Products}">
+<ObjectListItem title="{CategoryModel>Name}({CategoryModel>ID})" number="Rs: {CategoryModel>Price}" 
+numberUnit="{CategoryModel>Rating} (Stars)">
+</ObjectListItem>
+</List>-->
+
+<Table items="{CategoryModel>/Products}">
+    <columns>
+         <Column>
+            <header>
+                <Text text="Product Name"></Text>
+            </header>
+        </Column>
+        <Column>
+            <header>
+                <Text text="Description"></Text>
+            </header>
+        </Column>
+        <Column>
+            <header>
+                <Text text="Price"></Text>
+            </header>
+        </Column> 
+        <Column>
+            <header>
+                <Text text="Rating"></Text>
+            </header>
+        </Column>     
+        <Column>
+            <header>
+                <Text text="DiscontinuedDate"></Text>
+            </header>
+        </Column> 
+        <Column>
+            <header>
+                <Text text="ReleaseDate"></Text>
+            </header>
+        </Column>                           
+    </columns>   
+    <items>
+        <ColumnListItem>
+            <Text text="{CategoryModel>Name}({CategoryModel>ID})"></Text>
+            <Text text="{CategoryModel>Description}"></Text>
+            <Text text="{CategoryModel>Price}"></Text>
+            <Text text="{CategoryModel>Rating}"></Text>
+            <Text text="{CategoryModel>DiscontinuedDate}"></Text>
+            <Text text="{CategoryModel>ReleaseDate}"></Text>
+        </ColumnListItem>
+    </items>         
+</Table>
+
+<buttons>
+<Button text="Add Product" press="_OnAddProduct"></Button>
+<Button text="Save" press="_OnCatSave"></Button>
+<Button text="Close" press="_OnCatClose"></Button>
+</buttons>
+</Dialog>
+</core:FragmentDefinition>
